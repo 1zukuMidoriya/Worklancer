@@ -1,0 +1,10 @@
+com\main\worklancer\Models\User.class
+com\main\worklancer\Models\Comments.class
+com\main\worklancer\Repositories\UserRepository.class
+com\main\worklancer\Controllers\UserController.class
+com\main\worklancer\Controllers\ProjectController.class
+com\main\worklancer\Models\Project.class
+com\main\worklancer\Repositories\ProjectRepository.class
+com\main\worklancer\Repositories\CommentRepository.class
+com\main\worklancer\Controllers\CommentsController.class
+com\main\worklancer\WorkLancerApplication.class
