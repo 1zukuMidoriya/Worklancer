@@ -70,7 +70,7 @@ function RegisterPage() {
                         Register
                     </Button>
                 </Form><br/>
-                <Link to="/">already have a account?</Link>
+                <Link className="text-center" to="/">already have a account?</Link>
 
             </Card>
 
