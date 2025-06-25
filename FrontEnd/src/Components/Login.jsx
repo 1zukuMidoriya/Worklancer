@@ -73,7 +73,7 @@ function Login() {
                         Login
                     </Button>
                 </Form>
-                <Link className="text-center mt-3"  to="/register">New guy around?</Link>
+                <Link to="/register">New guy around?</Link>
             </Card>
         </Container>
     );
