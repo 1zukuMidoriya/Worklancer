@@ -1,5 +1,0 @@
-# Created at 2025-06-23T15:31:08.360
-Boot Manifest-JAR contains absolute paths in classpath 'E:\Piyush Full Stack\JForce\WorkLancer2\target\test-classes'
-Hint: <argLine>-Djdk.net.URLClassPath.disableClassPathURLCheck=true</argLine>
-'other' has different root
-

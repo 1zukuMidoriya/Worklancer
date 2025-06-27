@@ -1,12 +1,14 @@
-import React, { useState, useEffect } from 'react';
-import { Container, Card, Button, Form } from 'react-bootstrap';
+import React, { useState, useEffect, useContext } from 'react';
+import { Container, Card, Button, Form, ListGroup } from 'react-bootstrap';
 import { useParams, useNavigate } from 'react-router-dom';
 import LoadingSpinner from '../Components/LodingSpinner';
+import UserContext from '../UserContext';
 import axios from 'axios';
 
 function ProjectDetails() {
     const { id } = useParams();
     const navigate = useNavigate();
+    const { user } = useContext(UserContext);
     const [project, setProject] = useState(null);
     const [loading, setLoading] = useState(true);
     const [comment, setComment] = useState('');
@@ -29,10 +31,10 @@ function ProjectDetails() {
         if (!comment.trim()) return;
 
         axios.post(`http://localhost:8080/Comments/${id}`, {
-            comment: comment
+            comment: comment,
+            user: { id: user?.id }
         })
         .then(res => {
-            // refresh project data to show new comment
             return axios.get(`http://localhost:8080/Projects/project/${id}`);
         })
         .then(res => {
@@ -51,7 +53,7 @@ function ProjectDetails() {
                 Back
             </Button>
 
-            <Card>
+            <Card className="mb-4">
                 <Card.Body>
                     <h2>{project.title}</h2>
                     <hr />
@@ -63,22 +65,18 @@ function ProjectDetails() {
                     {project.dataLink && (
                         <p><strong>Data:</strong> <a href={project.dataLink} target="_blank">{project.dataLink}</a></p>
                     )}
+                </Card.Body>
+            </Card>
 
-                    <hr />
-                    <h4>Comments</h4>
-                    {project.comments && project.comments.length > 0 ? (
-                        project.comments.map((comment, index) => (
-                            <div key={index} className="mb-2">
-                                <p>{comment.comment}</p>
-                            </div>
-                        ))
-                    ) : (
-                        <p>No comments yet</p>
-                    )}
-
-                    <Form onSubmit={handleCommentSubmit} className="mt-3">
+            <Card className="mb-4">
+                <Card.Header>
+                    <h5>Add Comment</h5>
+                </Card.Header>
+                <Card.Body>
+                    <Form onSubmit={handleCommentSubmit}>
                         <Form.Control
-                            type="text"
+                            as="textarea"
+                            rows={3}
                             placeholder="Add a comment..."
                             value={comment}
                             onChange={(e) => setComment(e.target.value)}
@@ -87,6 +85,32 @@ function ProjectDetails() {
                             Post Comment
                         </Button>
                     </Form>
+                </Card.Body>
+            </Card>
+
+            <Card>
+                <Card.Header>
+                    <h5>Comments</h5>
+                </Card.Header>
+                <Card.Body>
+                    {project.comments && project.comments.length > 0 ? (
+                        <ListGroup variant="flush">
+                            {project.comments.map((c) => (
+                                <ListGroup.Item 
+                                    key={c.id}
+                                    style={c.user?.role === 'Admin' ? { backgroundColor: '#ffe6e6' } : {}}
+                                >
+                                    <p className="mb-1">{c.comment}</p>
+                                    <small className="text-muted">
+                                        By: {c.user?.name || 'Client'} 
+                                        {c.user?.role === 'Admin' && ' (Admin)'}
+                                    </small>
+                                </ListGroup.Item>
+                            ))}
+                        </ListGroup>
+                    ) : (
+                        <p className="text-muted">No comments yet</p>
+                    )}
                 </Card.Body>
             </Card>
         </Container>
