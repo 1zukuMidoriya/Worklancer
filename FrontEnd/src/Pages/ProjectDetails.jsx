@@ -98,7 +98,6 @@ function ProjectDetails() {
                             {project.comments.map((c) => (
                                 <ListGroup.Item 
                                     key={c.id}
-                                    style={c.user?.role === 'Admin' ? { backgroundColor: '#ffe6e6' } : {}}
                                 >
                                     <p className="mb-1">{c.comment}</p>
                                     <small className="text-muted">

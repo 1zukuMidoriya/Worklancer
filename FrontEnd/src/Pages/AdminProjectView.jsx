@@ -33,7 +33,7 @@ function AdminProjectView() {
     try {
       const commentData = {
         comment: comment,
-        user: { id: 1 } // Admin user ID
+        user: { id: 1 } 
       }
       await axios.post(`http://localhost:8080/Comments/${projectId}`, commentData)
       setComment('')
@@ -61,7 +61,7 @@ function AdminProjectView() {
           <p><strong>Price:</strong> ₹{project?.price}</p>
           <p><strong>Status:</strong> {project?.status}</p>
           <p><strong>Deadline:</strong> {new Date(project?.deadline).toLocaleDateString()}</p>
-          <p><strong>User:</strong> {project?.user?.name}</p>
+          <p><strong>Data Link:</strong> {project?.dataLink}</p>
         </Card.Body>
       </Card>
 

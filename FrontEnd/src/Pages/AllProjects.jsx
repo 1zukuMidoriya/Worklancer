@@ -11,8 +11,13 @@ function AllProjects() {
     const { user } = useContext(UserContext)
 
     useEffect(() => {
-        if (user && user.id) {
-            axios.get(`http://localhost:8080/Projects/${user.id}`)
+        if (user) {
+            // Agar Admin hai to sabhi projects fetch karo, warna sirf user ke projects
+            const url = user.role === 'Admin' 
+                ? 'http://localhost:8080/Projects'
+                : `http://localhost:8080/Projects/${user.id}`
+                
+            axios.get(url)
                 .then(response => {
                     setProjects(response.data)
                     setLoading(false)
@@ -33,7 +38,9 @@ function AllProjects() {
 
         return (
             <Container className="py-4">
-                <h2 className="mb-4">All Projects</h2>
+                <h2 className="mb-4">
+                    {user?.role === 'Admin' ? 'All Projects' : 'My Projects'}
+                </h2>
                 <Row>
                     {projects.map(project => (
                         <Col md={6} lg={4} key={project.id} className="mb-3">

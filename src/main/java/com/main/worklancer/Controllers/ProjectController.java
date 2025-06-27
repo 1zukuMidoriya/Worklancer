@@ -33,6 +33,12 @@ public class ProjectController {
 
 
 
+    @GetMapping("/Projects")
+    public ResponseEntity<List<Project>> getAllProjects() {
+        List<Project> projects = projectRepo.findAll();
+        return new ResponseEntity<>(projects, HttpStatus.OK);
+    }
+
     @GetMapping("/Projects/{userId}")
     public ResponseEntity<List<Project>> getProjectsByUserId(@PathVariable int userId) {
         User user = userRepo.findById(userId).orElse(null);

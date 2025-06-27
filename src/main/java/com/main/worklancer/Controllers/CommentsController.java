@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.main.worklancer.Models.Comments;
 import com.main.worklancer.Models.Project;
+import com.main.worklancer.Models.User;
 import com.main.worklancer.Repositories.CommentRepository;
 import com.main.worklancer.Repositories.ProjectRepository;
 import com.main.worklancer.Repositories.UserRepository;
@@ -47,6 +48,13 @@ public class CommentsController {
         if(project == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
+        
+        // Fetch the user from database if user id is provided
+        if(comment.getUser() != null && comment.getUser().getId() > 0) {
+            User user = userRepo.findById(comment.getUser().getId()).orElse(null);
+            comment.setUser(user);
+        }
+        
         comment.setProject(project);
         commentRepo.save(comment);
         return new ResponseEntity<>(project, HttpStatus.CREATED);

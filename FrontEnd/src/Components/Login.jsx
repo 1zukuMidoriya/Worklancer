@@ -26,7 +26,6 @@ function Login() {
             let res = await axios.get("http://localhost:8080/Users")
             let users = res.data;
 
-            console.log(users)
             const match = users.find(
                 
                 (user) => user.email === email && user.password === password
