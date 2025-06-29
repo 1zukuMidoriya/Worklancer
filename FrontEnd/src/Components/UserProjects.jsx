@@ -16,7 +16,7 @@ function UserProjects({ projects, onProjectUpdate }) {
     }
   }
 
-  // Animation variants
+  
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {

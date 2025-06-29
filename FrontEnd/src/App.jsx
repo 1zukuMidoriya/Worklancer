@@ -6,7 +6,7 @@ import {BrowserRouter, Route, Routes} from "react-router-dom";
 import Dashboard from "./Pages/Dashboard.jsx";
 import Login from "./Components/Login.jsx";
 import UserContext from "./UserContext.jsx";
-import {useState} from "react";
+import {useState, useEffect} from "react";
 import AdminDashboard from "./Pages/AdminDashboard.jsx";
 import AllProjects from "./Pages/AllProjects.jsx";
 import ProjectDetails from "./Pages/ProjectDetails.jsx";
@@ -14,7 +14,18 @@ import UserDetails from './Pages/UserDetails.jsx';
 import AdminProjectView from './Pages/AdminProjectView.jsx';
 
 function App() {
-    const [user, setUser] = useState(null);
+    const [user, setUser] = useState(() => {
+        const savedUser = sessionStorage.getItem('worklancer_user');
+        return savedUser ? JSON.parse(savedUser) : null;
+    });
+
+    useEffect(() => {
+        if (user) {
+            sessionStorage.setItem('worklancer_user', JSON.stringify(user));
+        } else {
+            sessionStorage.removeItem('worklancer_user');
+        }
+    }, [user]);
 
     return (
     <UserContext.Provider value={{ user, setUser }} >

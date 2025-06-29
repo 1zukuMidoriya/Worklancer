@@ -1,13 +1,15 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useContext } from 'react'
 import { Container, Navbar, Button } from 'react-bootstrap'
 import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { motion } from 'framer-motion'
+import UserContext from "../UserContext.jsx";
 import './AdminDashboard.css'
 
 function AdminDashboard() {
   const [users, setUsers] = useState(null)
   const navigate = useNavigate()
+  const { setUser } = useContext(UserContext)
 
   useEffect(() => {
     axios.get('http://localhost:8080/Users')
@@ -20,6 +22,7 @@ function AdminDashboard() {
   }, [])
 
   const handleLogout = () => {
+    setUser(null)
     navigate('/')
   }
 
@@ -29,7 +32,6 @@ function AdminDashboard() {
 
   const nonAdminUsers = users ? users.filter(u => (u.role !== 'Admin')) : []
 
-  // Animation variants
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {

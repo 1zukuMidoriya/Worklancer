@@ -3,7 +3,7 @@ import { Badge, Card, Button, Modal } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import UserContext from '../UserContext';
-import QRCode from '../assets/QR.jpeg';
+import QRCode from '../assets/QR.jpg';
 
 function ProjectCard({ project }) {
     const navigate = useNavigate();
@@ -127,7 +127,8 @@ function ProjectCard({ project }) {
                         style={{ 
                             width: '100%', 
                             height: '100%', 
-                            objectFit: 'cover' 
+                            objectFit: 'cover', 
+                            border: 'none'
                         }} 
                     />
                 </div>
