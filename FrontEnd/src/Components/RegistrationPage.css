@@ -1,0 +1,109 @@
+/* Registration Component Styles - Apple Inspired */
+
+.register-container {
+  background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.register-card {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border: none;
+  border-radius: 20px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  padding: 48px 40px;
+  min-width: 380px;
+}
+
+.register-title {
+  font-size: 32px;
+  font-weight: 600;
+  color: #1d1d1f;
+  margin-bottom: 40px;
+  text-align: center;
+  letter-spacing: -0.5px;
+}
+
+.form-label {
+  font-size: 14px;
+  font-weight: 500;
+  color: #424245;
+  margin-bottom: 8px;
+  letter-spacing: -0.2px;
+}
+
+.form-input {
+  background: #f5f5f7;
+  border: 1px solid transparent;
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-size: 16px;
+  transition: all 0.2s ease;
+  width: 100%;
+  outline: none;
+}
+
+.form-input:focus {
+  background: #ffffff;
+  border-color: #0071e3;
+  box-shadow: 0 0 0 3px rgba(0, 113, 227, 0.1);
+}
+
+.form-input::placeholder {
+  color: #86868b;
+  font-weight: 400;
+}
+
+.register-button {
+  background: #66bb6a;
+  color: white;
+  border: none;
+  border-radius: 12px;
+  padding: 14px 24px;
+  font-size: 17px;
+  font-weight: 500;
+  width: 100%;
+  margin-top: 24px;
+  cursor: pointer;
+  letter-spacing: -0.2px;
+}
+
+.register-button:hover {
+  background: #56a85a;
+}
+
+.login-link {
+  display: block;
+  text-align: center;
+  margin-top: 24px;
+  color: #0071e3;
+  font-size: 14px;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.login-link:hover {
+  color: #0077ed;
+  text-decoration: none;
+}
+
+/* Form Group Spacing */
+.form-group-custom {
+  margin-bottom: 20px;
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+  .register-card {
+    min-width: 100%;
+    margin: 20px;
+    padding: 32px 24px;
+  }
+  
+  .register-title {
+    font-size: 28px;
+  }
+} 
