@@ -65,6 +65,7 @@ public class ProjectController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         project.setUser(user);
+        project.setCreationDate(java.time.LocalDate.now()); // Yahan manually set kar diya
         projectRepo.save(project);
         user.getProject().add(project);
         userRepo.save(user);

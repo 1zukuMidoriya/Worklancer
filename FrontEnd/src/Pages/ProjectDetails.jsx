@@ -102,7 +102,7 @@ function ProjectDetails() {
                                     <p className="mb-1">{c.comment}</p>
                                     <small className="text-muted">
                                         By: {c.user?.name || 'Client'} 
-                                        {c.user?.role === 'Admin' && ' (Admin)'}
+                                        {c.user?.role === 'Admin' && ' (Freelancer)'}
                                     </small>
                                 </ListGroup.Item>
                             ))}

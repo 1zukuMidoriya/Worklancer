@@ -29,7 +29,6 @@ function Dashboard() {
 
     return (
         <>
-            {/* Navbar */}
             <Navbar bg="dark" variant="dark" expand="lg" className="mb-4">
                 <Container>
                     <Navbar.Brand href="#" onClick={GetAllProjects}>Hello {user.name}!</Navbar.Brand>
@@ -53,7 +52,7 @@ function Dashboard() {
 
             <>
                 {
-                    projects === "AllProjects" ? <AllProjects/> : <CreateProject/>
+                    projects === "AllProjects" ? <AllProjects/> : <CreateProject onProjectSent={GetAllProjects}/>
                 }
             </>
 

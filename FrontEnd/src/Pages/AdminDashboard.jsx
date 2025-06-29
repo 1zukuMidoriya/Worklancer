@@ -32,7 +32,7 @@ function AdminDashboard() {
     <>
       <Navbar bg="dark" variant="dark" className="mb-4">
         <Container>
-          <Navbar.Brand> <h3>Hello Admin, </h3> </Navbar.Brand>
+          <Navbar.Brand> <h3>Hello Freelancer, </h3> </Navbar.Brand>
           <Button
             variant="outline-light"
             size="sm"
@@ -47,7 +47,7 @@ function AdminDashboard() {
           <LoadingSpinner/>
         ) : (
           <>
-            <h2>All Users</h2>
+            <h2>All Clients</h2>
             <Row>
               {nonAdminUsers.map((user) => (
                 <Col md={4} className="mb-3" key={user.id}>

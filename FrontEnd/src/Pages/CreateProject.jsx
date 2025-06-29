@@ -3,7 +3,7 @@ import {Button, Col, Container, Form, Row} from "react-bootstrap";
 import axios from 'axios'
 import UserContext from "../UserContext.jsx";
 
-function CreateProject() {
+function CreateProject({ onProjectSent }) {
     const { user } = useContext(UserContext)
     const [projectData, setProjectData] = useState({
         title: '',
@@ -54,6 +54,9 @@ function CreateProject() {
                 deadline: '',
                 price: ''
             })
+            if (onProjectSent) {
+                onProjectSent()
+            }
         })
         .catch(error => {
             alert('Something went wrong!')
