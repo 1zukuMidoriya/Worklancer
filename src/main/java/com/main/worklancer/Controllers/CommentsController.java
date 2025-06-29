@@ -49,7 +49,6 @@ public class CommentsController {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
         
-        // Fetch the user from database if user id is provided
         if(comment.getUser() != null && comment.getUser().getId() > 0) {
             User user = userRepo.findById(comment.getUser().getId()).orElse(null);
             comment.setUser(user);
